@@ -1,0 +1,39 @@
+Genus,Species,Binomial,Height.max..m.,Height.actual..m.,P50..MPa.,P12..MPa.,P88..MPa.,Slope,Ks..kg.m.1.MPa.1.s.1.,KL..kg.m.1.MPa.1.s.1.,Huber.value,SLA..cm2.g.1.,Latitude,Longitude,Altitude..m.,MATbest,PPTbest,References
+Allocasuarina,luehmannii,Allocasuarina luehmannii,,0.38,,,,,,,,,-36.5833333333333,143.883333333333,140,15.03,469.52,
+Cedrus,atlantica,Cedrus atlantica,,0.25,-4.98,-4.11,,28.8,,,,,44.0833333333333,3.03333333333333,650,12.15,736.2,Lens et al. 2016
+Pseudotsuga,menziesii,Pseudotsuga menziesii,,0.25,-4.82,-2.7,NA,34,,,,,46.5833333333333,-121.833333333333,300,6.25,2238,Lens et al. 2016
+Pseudotsuga,macrocarpa,Pseudotsuga macrocarpa,,0.25,,,,,,,,,34.3333333333333,-116.166666666667,1315,20.65,76.5,
+Eucalyptus,pilularis,Eucalyptus pilularis,,,,,,,,,,,,,,16.86887,1110.789,
+Eucalyptus,populnea,Eucalyptus populnea,,,-5.64,-3.53,-7.7,,,,,,,,,18.8,370.6,Li et al. (2018)
+Glycine,max,Glycine max,,,,,,,,,,,NA,NA,NA,NA,NA,
+Quercus,coccifera,Quercus coccifera,,,,,,,,,,,41.8166666666667,-0.5,620,13.36,463.3,
+Quercus,ilex,Quercus ilex,,,-6.88,-4.3,NA,20.4,,,,,40.3166666666667,-2.25,950,11.85,812.18,Lens et al. 2016
+Quercus,suber,Quercus suber,,,,,,,,,,,39.55,-4.73333333333333,600,12.757,785.5,
+Pinus,sylvestris,Pinus sylvestris,,0.75,-3.09,-2.62,NA,69.3,,,,,60.23,25.02,20,5.6,603,Lens et al. 2016
+Picea,abies,Picea abies,,0.57,-3.61,-2.8,NA,46.6,,,,,60.23,25.02,20,5.6,603,Lens et al. 2016
+Betula,pendula,Betula pendula,,0.55,-2.01,-1.7,NA,NA,,,,,60.23,25.02,20,5.6,603,Lens et al. 2016
+Populus,tremula,Populus tremula,,0.98,,,,,,,,,60.23,25.02,20,5.6,603,
+Quercus,petraea,Quercus petraea,,,-3.3,-2.5,NA,27.1,,,,,48.77,6.33,240,10.28,723.34,Lens et al. 2016
+Quercus,pubescens,Quercus pubescens,,,-4.81,-4.08,NA,82.4,,,,,44.18,5.25,1200,6.476,1104.6,Lens et al. 2016
+Quercus,ilex,Quercus ilex,,,-6.88,-4.3,NA,20.4,,,,,44.18,5.25,1200,6.476,1104.6,Lens et al. 2016
+Broussonetia,papyrifera,Broussonetia papyrifera,10,,-0.493092146233794,NA,-0.955470004064967,,,,,,26.4333333333333,106.683333333333,1147,15.605,1081.44,Fan et al. 2011
+Cinnamomum,bodinieri,Cinnamomum bodinieri,16,,,,,,,,,,26.4333333333333,106.683333333333,1147,15.605,1081.44,
+Platycarya,longipes,Platycarya longipes,15,,-1.25167100212903,,-3.16693552054019,,,,,,26.4333333333333,106.683333333333,1147,15.605,1081.44,Fan et al. 2011. Species average
+Pteroceltis,tatarinowii,Pteroceltis tatarinowii,20,,-0.926065038985084,,-1.68434081164453,,,,,,26.4333333333333,106.683333333333,1147,15.605,1081.44,Fan et al. 2011. Species average
+Pyracantha,fortuneana,Pyracantha fortuneana,3,,,,,,,,,,26.4333333333333,106.683333333333,1147,15.605,1081.44,
+Rosa,cymosa,Rosa cymosa,5,,,,,,,,,,26.4333333333333,106.683333333333,1147,15.605,1081.44,
+Ficus,tikoua,Ficus tikoua,,,,,,,,,,,26.4333333333333,106.683333333333,1147,15.605,1081.44,
+Helianthus,annuus,Helianthus annuus,2,,-3.05,-1.87,NA,42.25,,,,,NA,NA,NA,NA,NA,Lens et al. 2016
+Pistacia,lentiscus,Pistacia lentiscus,5,,-6.41,-5.62,NA,48.4,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,Lens et al. 2016
+Cistus,albidus,Cistus albidus,1,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Limonium,magallufianum,Limonium magallufianum,,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Limonium,gibertii,Limonium gibertii,,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Hypericum,balearicum,Hypericum balearicum,2,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Phlomis,italica,Phlomis italica,1,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Malva,subovata,Malva subovata,2,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Diplotaxis,ibicensis,Diplotaxis ibicensis,,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Beta,maritima subsp.marcosii,Beta maritima subsp.marcosii,,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Beta,maritima subsp. maritima,Beta maritima subsp. maritima,,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Lysimachia,minoricensis,Lysimachia minoricensis,,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Olea,europaea var. meski,Olea europaea var. meski,15,1.35,-7.2,-3.8,-11.36666667,9.12,,,,35,33.891835,10.101385,30,19.5,218,Ennajeh et al. 2008
+Olea,europaea var. chemlali,Olea europaea var. chemlali,15,1.35,-7,-2.58,-12,7.6,,,,33.4,33.891835,10.101385,30,19.5,218,Ennajeh et al. 2008
