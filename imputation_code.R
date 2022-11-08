@@ -10,11 +10,11 @@ data_traits_total <- read_csv("data/XFT_full_database_compressed.csv",
                         col_types = cols(P50..MPa. = col_double(),
                                          Longitude = col_double()))
 data_traits_ini <- data_traits_total %>% 
-  dplyr::select(-References) %>% 
+  dplyr::select(-References)# %>% 
   # mutate(Cleaned.binomial = case_when(is.na(Cleaned.binomial)~paste(genus,species),
   #                                     TRUE ~ Cleaned.binomial),
   #        taxon = gsub(" ", "_", Cleaned.binomial))%>% 
-  filter(!is.na(MATbest),!is.na(PPTbest))
+  # filter(!is.na(MATbest),!is.na(PPTbest))
 # data_traits <- data_traits[c(1:400),]
 #CREATE DATASET OF TARGET SPECIES
 species_new <- read_csv("data/Species_parameters_template.csv")%>% 
@@ -46,10 +46,11 @@ data_traits_cured <- data_traits %>%
                             Genus == "Nectandra"~"Lauraceae",
                             Genus == "Platanus"~"Platanaceae",
                             Genus == "Tinospora"~"Menispermaceae",
+                            Genus == "Cornus"~"Cornaceae",
+                            Genus == "Nyssa"~'Nyssaceae',
                             TRUE ~ Family),
          Family = as_factor(Family),
          Family = fct_recode(Family,
-                             Nyssaceae = "Cornaceae",
                              Petiveriaceae = 'Phytolaccaceae',
                              Asteraceae = "Compositae",
                              Fabaceae = "Leguminosae"))  %>% 
@@ -76,29 +77,36 @@ res <- imputeTraits(dataset = data.frame(data_traits_cured) %>% select(-Family),
              imputationVariables = c('Height.max..m.', 'P50..MPa.', 'P12..MPa.', 'P88..MPa.', 
                                      'Slope', 'Ks..kg.m.1.MPa.1.s.1.','KL..kg.m.1.MPa.1.s.1.', 
                                      'Huber.value','SLA..cm2.g.1.'),
-             predictors = c("Latitude","Longitude","Altitude..m.","MATbest","PPTbest"),
+             predictors = c("MATbest","PPTbest"),
              prodNAs = 0.0
             )
 
 
-save(res, file = "imputation_result.RData")
+save(res, file = "results/imputation_result.RData")
 
 #EXPORT SPECIES
-taxon_new <- species_new %>% mutate(taxon =  paste(genus, species,sep="_")) %>% select(taxon)
-res$ximp2[which(res$ximp2$taxon %in% taxon_new$taxon),]
-res$ximp_sd[which(res$ximp_sd$taxon %in% taxon_new$taxon),]
+taxon_new <- species_new %>% mutate(taxon =  paste(Genus, Species,sep="_")) %>% select(taxon)
+imputation_df <- res$round3$ximp[which(res$round3$ximp$taxon %in% taxon_new$taxon),] %>% 
+  separate(col = taxon, into = c('Genus', 'Species'),sep = "_")
+
+B_vulgaris <- res$round3$ximp[which(res$round3$ximp$taxon %in% "Beta_vulgaris"),]
+imputation_df[which(Genus == "Beta"), c(3:10)] <- B_vulgaris
+Olea <- species_new %>% filter(Genus == "Olea")
+
+imputation_df %>% left_join(Olea)
+
+write_csv(imputation_df, file = "imputation_df.csv")
+
+imputation_df_sd <- res$round3$ximp_sd[which(res$round3$ximp_sd$taxon %in% taxon_new$taxon),]
+
+# data_total <- data_traits_ini %>% 
+#   mutate(taxon = paste(Genus, Species,sep="_")) %>% 
+#   group_by(taxon, Genus, Species) %>%
+#   summarise_all(.funs=mean, na.rm = TRUE) %>% 
+#   mutate(across(where(is.numeric),~ifelse(is.nan(.), NA, .))) %>% 
+#   ungroup() %>% 
+#   select(-c(Genus, Species, Latitude, Longitude, Altitude..m., MATbest, PPTbest))
 
 
-data_subsp <- data_traits_ini %>% 
-  filter(!is.na(subsp)) %>% 
-  mutate(taxon = paste(genus, species,subsp,sep="_")) %>% 
-  group_by(taxon, genus, species, subsp) %>%
-  summarise_all(.funs=mean, na.rm = TRUE) %>% 
-  mutate(across(where(is.numeric),~ifelse(is.nan(.), NA, .))) %>% 
-  ungroup() %>% 
-  select(-c(genus,species, subsp,MATbest,PPTbest))
 
 
-imputation_plus_subsps <- full_join(res$ximp2, data_subsp)
-
-write_csv(imputation_plus_subsps, file = "imputation_result_plus_subsps.csv")
