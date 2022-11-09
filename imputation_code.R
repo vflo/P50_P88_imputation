@@ -73,20 +73,23 @@ df_tree$scenario.3$node.label <- NULL
 # plot.phylo(df_tree$scenario.3, cex = 0.15, main = "scenario.3",
 #            type="fan")
 
-#TRAITS IMPUTATION
+#TRAIT IMPUTATION
 
 TrEvol::initializeTrEvo()
 res <- imputeTraits(dataset = data.frame(data_traits_cured) %>% select(-Family),
              phylogeny = df_tree$scenario.3,
              imputationVariables = c('Height.max..m.', 'P50..MPa.', 'P12..MPa.', 'P88..MPa.', 
-                                     'Slope', 'Ks..kg.m.1.MPa.1.s.1.','KL..kg.m.1.MPa.1.s.1.', 
-                                     'Huber.value','SLA..cm2.g.1.'),
+                                     'Slope' 
+                                     # 'Ks..kg.m.1.MPa.1.s.1.','KL..kg.m.1.MPa.1.s.1.', 
+                                     # 'Huber.value','SLA..cm2.g.1.'
+                                     ),
              predictors = c("MATbest","PPTbest"),
              prodNAs = 0.0
             )
 
 
 save(res, file = "results/imputation_result.RData")
+load(file = "results/imputation_result.RData")
 
 #EXPORT SPECIES
 taxon_new <- species_new %>% mutate(taxon =  paste(Genus, Species,sep="_")) %>% select(taxon)
@@ -98,17 +101,28 @@ species_new[which(species_new$Genus == "Beta"), c(4,6:13)] <- B_vulgaris
 Beta <- species_new %>% filter(Genus == "Beta")
 Olea <- species_new %>% filter(Genus == "Olea")
 
-imputation_df <- imputation_df %>% 
-  mutate(Binomial = paste(Genus, Species, sep = " ")) %>% 
-  bind_rows(Beta) %>% 
-  bind_rows(Olea) %>% 
-  arrange(Binomial) %>% 
-  coalesce(species_new %>% 
-             group_by(Genus, Species,Binomial) %>% 
-             summarise_all(.funs=mean, na.rm = TRUE)%>% 
-             arrange(Binomial))
+# imputation_df <- imputation_df %>% 
+#   mutate(Binomial = paste(Genus, Species, sep = " ")) %>% 
+#   bind_rows(Beta) %>% 
+#   bind_rows(Olea) %>% 
+#   arrange(Binomial) %>% 
+#   coalesce(species_new %>% 
+#              group_by(Genus, Species,Binomial) %>% 
+#              summarise_all(.funs=mean, na.rm = TRUE)%>% 
+#              arrange(Binomial))
 
 write_csv(imputation_df, file = "imputation_df.csv")
+
+species_new %>% 
+  group_by(Genus, Species,Binomial) %>% 
+  summarise_all(.funs=mean, na.rm = TRUE)%>% 
+  arrange(Binomial) %>% 
+  # coalesce(Olea) %>% 
+  # coalesce(Beta) %>% 
+  coalesce(imputation_df %>% 
+             mutate(Binomial = paste(Genus, Species, sep = " "))%>% 
+               bind_rows(Beta) %>%
+               bind_rows(Olea))
 
 # imputation_df_sd <- res$round3$ximp_sd[which(res$round3$ximp_sd$taxon %in% taxon_new$taxon),]
 

@@ -8,11 +8,11 @@ Eucalyptus,populnea,Eucalyptus populnea,,,-5.64,-3.53,-7.7,,,,,,,,,18.8,370.6,Li
 Glycine,max,Glycine max,,,,,,,,,,,NA,NA,NA,NA,NA,
 Quercus,coccifera,Quercus coccifera,,,,,,,,,,,41.8166666666667,-0.5,620,13.36,463.3,
 Quercus,ilex,Quercus ilex,,,-6.88,-4.3,NA,20.4,,,,,40.3166666666667,-2.25,950,11.85,812.18,Lens et al. 2016
-Quercus,suber,Quercus suber,,,,,,,,,,,39.55,-4.73333333333333,600,12.757,785.5,
+Quercus,suber,Quercus suber,,,-5.2,-3.7,NA,63.3,,,,,39.55,-4.73333333333333,600,12.757,785.5,Vaz et al. 2012
 Pinus,sylvestris,Pinus sylvestris,,0.75,-3.09,-2.62,NA,69.3,,,,,60.23,25.02,20,5.6,603,Lens et al. 2016
 Picea,abies,Picea abies,,0.57,-3.61,-2.8,NA,46.6,,,,,60.23,25.02,20,5.6,603,Lens et al. 2016
 Betula,pendula,Betula pendula,,0.55,-2.01,-1.7,NA,NA,,,,,60.23,25.02,20,5.6,603,Lens et al. 2016
-Populus,tremula,Populus tremula,,0.98,,,,,,,,,60.23,25.02,20,5.6,603,
+Populus,tremula,Populus tremula,,0.98,-2.6,-1.77,NA,60,,,,,60.23,25.02,20,5.6,603,Lens et al. 2016
 Quercus,petraea,Quercus petraea,,,-3.3,-2.5,NA,27.1,,,,,48.77,6.33,240,10.28,723.34,Lens et al. 2016
 Quercus,pubescens,Quercus pubescens,,,-4.81,-4.08,NA,82.4,,,,,44.18,5.25,1200,6.476,1104.6,Lens et al. 2016
 Quercus,ilex,Quercus ilex,,,-6.88,-4.3,NA,20.4,,,,,44.18,5.25,1200,6.476,1104.6,Lens et al. 2016
@@ -31,9 +31,9 @@ Limonium,gibertii,Limonium gibertii,,,,,,,,,,,39.4666666666667,2.51666666666667,
 Hypericum,balearicum,Hypericum balearicum,2,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
 Phlomis,italica,Phlomis italica,1,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
 Malva,subovata,Malva subovata,2,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
-Diplotaxis,ibicensis,Diplotaxis ibicensis,,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
-Beta,maritima subsp.marcosii,Beta maritima subsp.marcosii,,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
-Beta,maritima subsp. maritima,Beta maritima subsp. maritima,,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
-Lysimachia,minoricensis,Lysimachia minoricensis,,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Diplotaxis,ibicensis,Diplotaxis ibicensis,1,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Beta,maritima subsp.marcosii,Beta maritima subsp.marcosii,1,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Beta,maritima subsp. maritima,Beta maritima subsp. maritima,1,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
+Lysimachia,minoricensis,Lysimachia minoricensis,0.8,,,,,,,,,,39.4666666666667,2.51666666666667,100,17.75,562.21,
 Olea,europaea var. meski,Olea europaea var. meski,15,1.35,-7.2,-3.8,-11.36666667,9.12,,,,35,33.891835,10.101385,30,19.5,218,Ennajeh et al. 2008
 Olea,europaea var. chemlali,Olea europaea var. chemlali,15,1.35,-7,-2.58,-12,7.6,,,,33.4,33.891835,10.101385,30,19.5,218,Ennajeh et al. 2008
