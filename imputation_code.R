@@ -10,11 +10,11 @@ data_traits_total <- read_csv("data/XFT_full_database_compressed.csv",
                         col_types = cols(P50..MPa. = col_double(),
                                          Longitude = col_double()))
 data_traits_ini <- data_traits_total %>% 
-  dplyr::select(-References)# %>% 
+  dplyr::select(-References) %>% 
   # mutate(Cleaned.binomial = case_when(is.na(Cleaned.binomial)~paste(genus,species),
   #                                     TRUE ~ Cleaned.binomial),
   #        taxon = gsub(" ", "_", Cleaned.binomial))%>% 
-  # filter(!is.na(MATbest),!is.na(PPTbest))
+  filter(!is.na(MATbest),!is.na(PPTbest))
 # data_traits <- data_traits[c(1:400),]
 #CREATE DATASET OF TARGET SPECIES
 species_new <- read_csv("data/Species_parameters_template.csv")%>% 
@@ -48,6 +48,10 @@ data_traits_cured <- data_traits %>%
                             Genus == "Tinospora"~"Menispermaceae",
                             Genus == "Cornus"~"Cornaceae",
                             Genus == "Nyssa"~'Nyssaceae',
+                            # Genus == "Baccaurea"~'Phyllanthaceae',
+                            # Genus == "Neea"~'Nyctaginaceae',
+                            # Genus == "Phyllanthus"~'Phyllanthaceae',
+                            # Genus == "Saccharum"~'Poaceae',
                             TRUE ~ Family),
          Family = as_factor(Family),
          Family = fct_recode(Family,
@@ -89,15 +93,24 @@ taxon_new <- species_new %>% mutate(taxon =  paste(Genus, Species,sep="_")) %>% 
 imputation_df <- res$round3$ximp[which(res$round3$ximp$taxon %in% taxon_new$taxon),] %>% 
   separate(col = taxon, into = c('Genus', 'Species'),sep = "_")
 
-B_vulgaris <- res$round3$ximp[which(res$round3$ximp$taxon %in% "Beta_vulgaris"),]
-imputation_df[which(Genus == "Beta"), c(3:10)] <- B_vulgaris
+B_vulgaris <- res$round3$ximp[which(res$round3$ximp$taxon %in% "Beta_vulgaris"),] %>% dplyr::select(c(2,4,9,3,7,10,6,5,8))
+species_new[which(species_new$Genus == "Beta"), c(4,6:13)] <- B_vulgaris
+Beta <- species_new %>% filter(Genus == "Beta")
 Olea <- species_new %>% filter(Genus == "Olea")
 
-imputation_df %>% left_join(Olea)
+imputation_df <- imputation_df %>% 
+  mutate(Binomial = paste(Genus, Species, sep = " ")) %>% 
+  bind_rows(Beta) %>% 
+  bind_rows(Olea) %>% 
+  arrange(Binomial) %>% 
+  coalesce(species_new %>% 
+             group_by(Genus, Species,Binomial) %>% 
+             summarise_all(.funs=mean, na.rm = TRUE)%>% 
+             arrange(Binomial))
 
 write_csv(imputation_df, file = "imputation_df.csv")
 
-imputation_df_sd <- res$round3$ximp_sd[which(res$round3$ximp_sd$taxon %in% taxon_new$taxon),]
+# imputation_df_sd <- res$round3$ximp_sd[which(res$round3$ximp_sd$taxon %in% taxon_new$taxon),]
 
 # data_total <- data_traits_ini %>% 
 #   mutate(taxon = paste(Genus, Species,sep="_")) %>% 
