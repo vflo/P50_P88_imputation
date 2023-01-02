@@ -74,20 +74,20 @@ df_tree$scenario.3$node.label <- NULL
 
 
 #TRAIT IMPUTATION
-# TrEvol::initializeTrEvo()
-# res <- imputeTraits(dataset = data.frame(data_traits_cured) %>% select(-Family),
-#              phylogeny = df_tree$scenario.3,
-#              imputationVariables = c('Height.max..m.', 'P50..MPa.', 'P12..MPa.', 'P88..MPa.', 
-#                                      'Slope' 
-#                                      # 'Ks..kg.m.1.MPa.1.s.1.','KL..kg.m.1.MPa.1.s.1.', 
-#                                      # 'Huber.value','SLA..cm2.g.1.'
-#                                      ),
-#              predictors = c("MATbest","PPTbest"),
-#              prodNAs = 0.0
-#             )
-# 
-# 
-# save(res, file = "results/imputation_result.RData")
+TrEvol::initializeTrEvo()
+res <- imputeTraits(dataset = data.frame(data_traits_cured) %>% select(-Family),
+             phylogeny = df_tree$scenario.3,
+             imputationVariables = c('Height.max..m.', 'P50..MPa.', 'P12..MPa.', 'P88..MPa.',
+                                     'Slope',
+                                     'Ks..kg.m.1.MPa.1.s.1.','KL..kg.m.1.MPa.1.s.1.',
+                                     'Huber.value','SLA..cm2.g.1.'
+                                     ),
+             predictors = c("MATbest","PPTbest"),
+             prodNAs = 0.0
+            )
+
+
+save(res, file = "results/imputation_result.RData")
 load(file = "results/imputation_result.RData")
 
 #EXPORT SPECIES
